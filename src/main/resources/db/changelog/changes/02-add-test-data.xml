@@ -1,0 +1,75 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="db/changelog/changes/01-create-scheme.xml">
+
+    <changeSet id="2024_09_19_1600_add_test_data" author="am">
+        <insert tableName="currency">
+            <column name="short_name" value="eur"/>
+            <column name="description" value="Euroopa valuuta"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="short_name" value="usd"/>
+            <column name="description" value="Ameerika valuuta"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="short_name" value="sek"/>
+            <column name="description" value="Rootsi valuuta"/>
+        </insert>
+    </changeSet>
+    <changeSet id="2024_09_19_1610_add_test_data" author="am">
+        <insert tableName="currency_exchange">
+            <column name="from_currency_id" value="1"/>
+            <column name="to_currency_id" value="2"/>
+            <column name="rate" value="0.90"/>
+        </insert>
+        <insert tableName="currency_exchange">
+            <column name="from_currency_id" value="2"/>
+            <column name="to_currency_id" value="1"/>
+            <column name="rate" value="1.10"/>
+        </insert>
+    </changeSet>
+    <changeSet id="2024_09_19_1620_add_test_data" author="am">
+        <insert tableName="client">
+            <column name="first_name" value="Mari"/>
+            <column name="last_name" value="Uus"/>
+        </insert>
+        <insert tableName="client">
+            <column name="first_name" value="Priit"/>
+            <column name="last_name" value="Talu"/>
+        </insert>
+    </changeSet>
+    <changeSet id="2024_09_19_1630_add_test_data" author="am">
+        <insert tableName="client_account">
+            <column name="client_id" value="1"/>
+            <column name="currency_id" value="1"/>
+            <column name="amount" value="10"/>
+            <column name="status" value="OPEN"/>
+        </insert>
+        <insert tableName="client_account">
+            <column name="client_id" value="1"/>
+            <column name="currency_id" value="2"/>
+            <column name="amount" value="1"/>
+            <column name="status" value="OPEN"/>
+        </insert>
+        <insert tableName="client_account">
+            <column name="client_id" value="2"/>
+            <column name="currency_id" value="1"/>
+            <column name="amount" value="0"/>
+            <column name="status" value="OPEN"/>
+        </insert>
+        <insert tableName="client_account">
+            <column name="client_id" value="2"/>
+            <column name="currency_id" value="2"/>
+            <column name="amount" value="0"/>
+            <column name="status" value="OPEN"/>
+        </insert>
+        <insert tableName="client_account">
+            <column name="client_id" value="2"/>
+            <column name="currency_id" value="3"/>
+            <column name="amount" value="999"/>
+            <column name="status" value="BLOCKED"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
