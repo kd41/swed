@@ -22,12 +22,12 @@
         <insert tableName="currency_exchange">
             <column name="from_currency_id" value="1"/>
             <column name="to_currency_id" value="2"/>
-            <column name="rate" value="0.90"/>
+            <column name="rate" value="1.10"/>
         </insert>
         <insert tableName="currency_exchange">
             <column name="from_currency_id" value="2"/>
             <column name="to_currency_id" value="1"/>
-            <column name="rate" value="1.10"/>
+            <column name="rate" value="0.90"/>
         </insert>
     </changeSet>
     <changeSet id="2024_09_19_1620_add_test_data" author="am">
@@ -44,7 +44,7 @@
         <insert tableName="client_account">
             <column name="client_id" value="1"/>
             <column name="currency_id" value="1"/>
-            <column name="amount" value="10"/>
+            <column name="amount" value="1010"/>
             <column name="status" value="OPEN"/>
         </insert>
         <insert tableName="client_account">

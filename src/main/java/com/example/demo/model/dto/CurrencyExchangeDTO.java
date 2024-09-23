@@ -1,14 +1,15 @@
 package com.example.demo.model.dto;
 
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
 
-@Getter
 @Builder
+@Data
 @ToString
-public class CurrencyAmountDTO {
+public class CurrencyExchangeDTO {
 
     private int amount;
-    private String currency;
+    private String fromCurrency;
+    private String toCurrency;
 }

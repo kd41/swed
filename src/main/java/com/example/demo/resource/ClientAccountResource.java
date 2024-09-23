@@ -1,10 +1,11 @@
 package com.example.demo.resource;
 
 import com.example.demo.exception.InternalPreconditionFailedException;
-import com.example.demo.exception.InternalRollBackableException;
 import com.example.demo.model.dto.ClientAccountDTO;
 import com.example.demo.model.dto.CurrencyAmountDTO;
+import com.example.demo.model.dto.CurrencyExchangeDTO;
 import com.example.demo.model.dto.DebitDTO;
+import com.example.demo.model.dto.MainResponseDTO;
 import com.example.demo.service.rest.ClientAccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,14 +41,21 @@ public class ClientAccountResource {
     @PatchMapping(value = "add/{clientId}")
     public ResponseEntity<CurrencyAmountDTO> add(
         @PathVariable("clientId") int clientId,
-        @RequestBody DebitDTO debitDTO) throws InternalRollBackableException {
+        @RequestBody DebitDTO debitDTO) {
         return ResponseEntity.ok(clientAccountService.addCurrencyAmountDTO(clientId, debitDTO));
     }
 
     @PatchMapping(value = "debit/{clientId}")
     public ResponseEntity<CurrencyAmountDTO> debit(
         @PathVariable("clientId") int clientId,
-        @RequestBody DebitDTO debitDTO) throws InternalRollBackableException, InternalPreconditionFailedException {
+        @RequestBody DebitDTO debitDTO) throws InternalPreconditionFailedException {
         return ResponseEntity.ok(clientAccountService.debitCurrencyAmountDTO(clientId, debitDTO));
+    }
+
+    @PatchMapping(value = "exchange/{clientId}")
+    public ResponseEntity<MainResponseDTO> exchange(
+        @PathVariable("clientId") int clientId,
+        @RequestBody CurrencyExchangeDTO currencyExchangeDTO) throws InternalPreconditionFailedException {
+        return ResponseEntity.ok(clientAccountService.handleCurrencyExchangeDTO(clientId, currencyExchangeDTO));
     }
 }

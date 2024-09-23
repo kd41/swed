@@ -1,11 +1,12 @@
 package com.example.demo.service.internal;
 
 import com.example.demo.exception.InternalPreconditionFailedException;
-import com.example.demo.exception.InternalRollBackableException;
 
 public interface OperationService {
 
-    boolean add(int clientAccountId, int amount) throws InternalRollBackableException;
+    boolean add(int clientAccountId, int amount);
 
-    boolean debit(int clientAccountId, int amount) throws InternalRollBackableException, InternalPreconditionFailedException;
+    boolean debit(int clientAccountId, int amount) throws InternalPreconditionFailedException;
+
+    boolean exchange(int clientAccountFromId, int clientAccountToId, int amount) throws InternalPreconditionFailedException;
 }

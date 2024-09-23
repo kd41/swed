@@ -4,9 +4,12 @@ import com.example.demo.exception.InternalPreconditionFailedException;
 import com.example.demo.exception.InternalRollBackableException;
 import com.example.demo.model.dto.ClientAccountDTO;
 import com.example.demo.model.dto.CurrencyAmountDTO;
+import com.example.demo.model.dto.CurrencyExchangeDTO;
 import com.example.demo.model.dto.DebitDTO;
+import com.example.demo.model.dto.MainResponseDTO;
 import com.example.demo.model.entity.ClientAccountEntity;
 import com.example.demo.repository.ClientAccountRepository;
+import com.example.demo.service.external.ExternalService;
 import com.example.demo.service.internal.OperationService;
 import com.example.demo.service.rest.ClientAccountService;
 import com.example.demo.service.rest.RequestValidatorService;
@@ -31,6 +34,8 @@ public class ClientAccountServiceImpl implements ClientAccountService {
     private final ModelMapper modelMapper;
 
     private final OperationService operationService;
+
+    private final ExternalService externalService;
 
     @Override
     public List<ClientAccountDTO> getAllClientAccountDTOs() {
@@ -70,8 +75,11 @@ public class ClientAccountServiceImpl implements ClientAccountService {
     }
 
     @Override
-    public CurrencyAmountDTO debitCurrencyAmountDTO(int clientId, DebitDTO debitDTO) throws InternalRollBackableException, InternalPreconditionFailedException {
+    public CurrencyAmountDTO debitCurrencyAmountDTO(int clientId, DebitDTO debitDTO) throws InternalPreconditionFailedException {
         log.info("debitCurrencyAmountDTO: clientId={}, debitDTO={}", clientId, debitDTO);
+
+        externalService.callExternal();
+
         ClientAccountEntity clientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, debitDTO.getCurrency());
         log.info("debit START");
         operationService.debit(clientAccountEntity.getId(), debitDTO.getAmount());
@@ -83,5 +91,17 @@ public class ClientAccountServiceImpl implements ClientAccountService {
                                                                .build();
         log.info("debitCurrencyAmountDTO: result={}", currencyAmountDTO);
         return currencyAmountDTO;
+    }
+
+    @Override
+    public MainResponseDTO handleCurrencyExchangeDTO(int clientId, CurrencyExchangeDTO currencyExchangeDTO) throws InternalPreconditionFailedException {
+        log.info("handleCurrencyExchangeDTO: clientId={}, currencyExchangeDTO={}", clientId, currencyExchangeDTO);
+        ClientAccountEntity fromClientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId,
+                                                                                                                currencyExchangeDTO.getFromCurrency());
+        ClientAccountEntity toClientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, currencyExchangeDTO.getToCurrency());
+        log.info("exchange START");
+        operationService.exchange(fromClientAccountEntity.getId(), toClientAccountEntity.getId(), currencyExchangeDTO.getAmount());
+        log.info("exchange END");
+        return MainResponseDTO.getOK("success");
     }
 }

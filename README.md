@@ -1,3 +1,11 @@
+Decisions:
+API call are synchronous. There is possible to make them asynchronous - REST API will return "message accepted", and server will process add/debit/exchange using Scheduler. 
+PATCH vs POST. Add/debit are using patch, exchange is using post. 
+API endpoints "get-all" are made for testing/visualization.
+Lombock is using.
+Integer is using as amount. 1 means one cent.
+
+
 Project flow:
 generated project with IntelliJ
 database model
@@ -9,8 +17,9 @@ favicon.ico and banner.txt
 added @ControllerAdvice, exceptions
 @JsonDeserialize, @JsonSerialize, @JsonFormat
 Transactions (internal package)
-Commited to Github
-
+Committed to Github
+exchange
+external call simulation
 
 
 Working links:

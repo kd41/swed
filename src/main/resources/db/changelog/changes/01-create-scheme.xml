@@ -32,7 +32,7 @@
             <column name="date_from" type="TIMESTAMP(6) WITHOUT TIME ZONE" defaultValueComputed="now()">
                 <constraints nullable="false"/>
             </column>
-            <column name="date_to" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+            <column name="date_to" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
             <column name="status" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -56,15 +56,15 @@
             <column name="client_account_to_id" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="parent_operation_id" type="int" />
-            <column name="operation_order" type="int" />
+            <column name="parent_operation_id" type="int"/>
+            <column name="operation_order" type="int"/>
             <column name="status" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
             <column name="success" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="failover_count" type="boolean" />
+            <column name="failover_count" type="boolean"/>
             <column name="creation_date" type="TIMESTAMP(6) WITHOUT TIME ZONE" defaultValueComputed="now()">
                 <constraints nullable="false"/>
             </column>
@@ -76,8 +76,8 @@
             <column name="uuid" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="date_start" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
-            <column name="date_end" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+            <column name="date_start" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="date_end" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
             <column name="status" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -123,8 +123,8 @@
             <column name="rate" type="varchar(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="date_from" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
-            <column name="date_to" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+            <column name="date_from" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="date_to" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
