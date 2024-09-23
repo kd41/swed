@@ -1,4 +1,4 @@
-###Decisions:
+### Decisions:
 - API call are synchronous. There is possible to make them asynchronous - REST API will return "message accepted", and server will process add/debit/exchange using Scheduler. 
 - PATCH vs POST. Add/debit are using patch, exchange is using post. 
 - API endpoints "get-all" are made for testing/visualization.
@@ -6,7 +6,7 @@
 - Integer is using as amount. 1 means one cent.
 
 
-###Project flow:
+### Project flow:
 1. generated project with IntelliJ
 2. database model
 3. entity model
@@ -22,7 +22,7 @@
 13. external call simulation
 
 
-###Working links:
+### Working links:
 * http://localhost:8080/h2-console
 * http://localhost:8080/api/client/get-all
 * http://localhost:8080/api/client-account/get-all
