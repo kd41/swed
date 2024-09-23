@@ -64,9 +64,7 @@ public class ClientAccountServiceImpl implements ClientAccountService {
     public CurrencyAmountDTO addCurrencyAmountDTO(int clientId, DebitDTO debitDTO) throws InternalRollBackableException {
         log.info("addCurrencyAmountDTO: clientId={}, debitDTO={}", clientId, debitDTO);
         ClientAccountEntity clientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, debitDTO.getCurrency());
-        log.info("debit START");
         operationService.add(clientAccountEntity.getId(), debitDTO.getAmount());
-        log.info("debit END");
         clientAccountEntity = clientAccountRepository.findById(clientAccountEntity.getId()).get();
         CurrencyAmountDTO currencyAmountDTO = CurrencyAmountDTO.builder()
                                                                .amount(clientAccountEntity.getAmount())
@@ -81,9 +79,7 @@ public class ClientAccountServiceImpl implements ClientAccountService {
         log.info("debitCurrencyAmountDTO: clientId={}, debitDTO={}", clientId, debitDTO);
 
         ClientAccountEntity clientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, debitDTO.getCurrency());
-        log.info("debit START");
         operationService.debit(clientAccountEntity.getId(), debitDTO.getAmount());
-        log.info("debit END");
         clientAccountEntity = clientAccountRepository.findById(clientAccountEntity.getId()).get();
         CurrencyAmountDTO currencyAmountDTO = CurrencyAmountDTO.builder()
                                                                .amount(clientAccountEntity.getAmount())
@@ -99,9 +95,7 @@ public class ClientAccountServiceImpl implements ClientAccountService {
         ClientAccountEntity fromClientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId,
                                                                                                                 currencyExchangeDTO.getFromCurrency());
         ClientAccountEntity toClientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, currencyExchangeDTO.getToCurrency());
-        log.info("exchange START");
         operationService.exchange(fromClientAccountEntity.getId(), toClientAccountEntity.getId(), currencyExchangeDTO.getAmount());
-        log.info("exchange END");
         return MainResponseDTO.getOK("success");
     }
 }

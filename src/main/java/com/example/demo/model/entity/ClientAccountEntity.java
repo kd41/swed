@@ -2,6 +2,9 @@ package com.example.demo.model.entity;
 
 import com.example.demo.model.enums.AccountStatusEnum;
 
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,6 +22,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "client_account")
+@Audited
+@AuditTable(value = "au_client_account")
 @Getter
 @Setter
 @NoArgsConstructor
