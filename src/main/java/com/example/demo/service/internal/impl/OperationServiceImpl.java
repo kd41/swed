@@ -20,7 +20,7 @@ import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+@Service("operationService")
 @Slf4j
 @AllArgsConstructor
 public class OperationServiceImpl implements OperationService {

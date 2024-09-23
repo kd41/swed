@@ -14,6 +14,8 @@ import com.example.demo.service.internal.OperationService;
 import com.example.demo.service.rest.ClientAccountService;
 import com.example.demo.service.rest.RequestValidatorService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +35,9 @@ public class ClientAccountServiceImpl implements ClientAccountService {
 
     private final ModelMapper modelMapper;
 
-    private final OperationService operationService;
-
-    private final ExternalService externalService;
+    @Qualifier("operationFacadeService")
+    @Autowired
+    private OperationService operationService;
 
     @Override
     public List<ClientAccountDTO> getAllClientAccountDTOs() {
@@ -77,8 +79,6 @@ public class ClientAccountServiceImpl implements ClientAccountService {
     @Override
     public CurrencyAmountDTO debitCurrencyAmountDTO(int clientId, DebitDTO debitDTO) throws InternalPreconditionFailedException {
         log.info("debitCurrencyAmountDTO: clientId={}, debitDTO={}", clientId, debitDTO);
-
-        externalService.callExternal();
 
         ClientAccountEntity clientAccountEntity = requestValidatorService.validateAndGetClientAccountEntity(clientId, debitDTO.getCurrency());
         log.info("debit START");

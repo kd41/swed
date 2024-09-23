@@ -20,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ExternalServiceImpl implements ExternalService {
 
+    private final RestTemplate restTemplate;
+
     @Value("${app.main.service.external.url}")
     @Getter
     private String url;
@@ -27,7 +29,6 @@ public class ExternalServiceImpl implements ExternalService {
     @Override
     public void callExternal() {
         try {
-            RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
             HttpEntity<String> entity = new HttpEntity<>(headers);

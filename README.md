@@ -20,7 +20,8 @@
 11. Committed to Github
 12. exchange
 13. external call simulation
-
+14. OperationFacadeServiceImpl info use
+15. RestTemplate as Spring bean
 
 ### Working links:
 * http://localhost:8080/h2-console
