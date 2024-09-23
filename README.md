@@ -2,7 +2,7 @@
 - API call are synchronous. There is possible to make them asynchronous - REST API will return "message accepted", and server will process add/debit/exchange using Scheduler. 
 - PATCH vs POST. Add/debit are using patch, exchange is using post. 
 - API endpoints "get-all" are made for testing/visualization.
-- Lombock is using.
+- Lombok is using.
 - Integer is using as amount. 1 means one cent.
 
 
