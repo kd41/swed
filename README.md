@@ -20,7 +20,7 @@
 11. Committed to Github
 12. exchange
 13. external call simulation
-14. OperationFacadeServiceImpl info use
+14. OperationFacadeServiceImpl into use
 15. RestTemplate as Spring bean
 16. Envers into use
 
@@ -30,11 +30,11 @@
 * http://localhost:8080/api/client-account/get-all
 * http://localhost:8080/api/client-account/get/1/eur
 * PATCH:
-  * http://localhost:8080/api/client-account/add/1
+  * http://localhost:8080/api/client-account/deposit/1
   * Header: Content-Type:application/json
   * Body: {"amount":1,"currency":"usd"}
 * PATCH:
-  * http://localhost:8080/api/client-account/debit/1
+  * http://localhost:8080/api/client-account/withdraw/1
   * Header: Content-Type:application/json
   * Body: {"amount":1,"currency":"usd"}
 * POST:

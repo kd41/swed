@@ -9,7 +9,6 @@ import lombok.ToString;
 @ToString
 public class DebitDTO {
 
-    private int clientId;
     private int amount;
     private String currency;
 }

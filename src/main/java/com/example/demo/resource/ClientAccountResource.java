@@ -39,14 +39,14 @@ public class ClientAccountResource {
         return ResponseEntity.ok(clientAccountService.getCurrencyAmountDTO(clientId, currencyShortName));
     }
 
-    @PatchMapping(value = "add/{clientId}")
+    @PatchMapping(value = "deposit/{clientId}")
     public ResponseEntity<CurrencyAmountDTO> add(
         @PathVariable("clientId") int clientId,
         @RequestBody DebitDTO debitDTO) {
         return ResponseEntity.ok(clientAccountService.addCurrencyAmountDTO(clientId, debitDTO));
     }
 
-    @PatchMapping(value = "debit/{clientId}")
+    @PatchMapping(value = "withdraw/{clientId}")
     public ResponseEntity<CurrencyAmountDTO> debit(
         @PathVariable("clientId") int clientId,
         @RequestBody DebitDTO debitDTO) throws InternalPreconditionFailedException {

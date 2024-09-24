@@ -50,7 +50,7 @@
         <insert tableName="client_account">
             <column name="client_id" value="1"/>
             <column name="currency_id" value="2"/>
-            <column name="amount" value="1"/>
+            <column name="amount" value="2020"/>
             <column name="status" value="OPEN"/>
         </insert>
         <insert tableName="client_account">
