@@ -26,6 +26,7 @@
 15. RestTemplate as Spring bean
 16. Envers into use
 17. DemoApplicationTests into use
+18. @Retryable into use
 
 ### Working links:
 * http://localhost:8080/h2-console

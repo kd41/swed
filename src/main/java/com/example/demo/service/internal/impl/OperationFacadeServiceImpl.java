@@ -38,7 +38,11 @@ public class OperationFacadeServiceImpl implements OperationService {
     }
 
     private void beforeProcessing() {
-        externalService.callExternal();
+        try {
+            externalService.callExternal();
+        }catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     private void afterProcessing() {
