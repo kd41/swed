@@ -4,6 +4,8 @@
 - API endpoints "get-all" are made for testing/visualization.
 - Lombok is using.
 - Integer is using as amount. 1 means one cent.
+- Java version is "<java.version>16</java.version>". You can change it in pom.xml file.
+- 30 second is duration on my local env for withdraw 1000 requests for same user (com.example.demo.DemoApplicationTests.withdrawParallel1000Test2).
 
 
 ### Project flow:
@@ -23,6 +25,7 @@
 14. OperationFacadeServiceImpl into use
 15. RestTemplate as Spring bean
 16. Envers into use
+17. DemoApplicationTests into use
 
 ### Working links:
 * http://localhost:8080/h2-console
