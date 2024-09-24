@@ -1,6 +1,6 @@
 ### Decisions:
 - API call are synchronous. There is possible to make them asynchronous - REST API will return "message accepted", and server will process add/debit/exchange using Scheduler. 
-- PATCH vs POST. Add/debit are using patch, exchange is using post. 
+- PATCH vs POST. Deposit/withdraw are using patch, exchange is using post. 
 - API endpoints "get-all" are made for testing/visualization.
 - Lombok is using.
 - Integer is using as amount. 1 means one cent.
@@ -20,7 +20,7 @@
 9. @JsonDeserialize, @JsonSerialize, @JsonFormat
 10. Transactions (internal package)
 11. Committed to Github
-12. exchange
+12. exchange API
 13. external call simulation
 14. OperationFacadeServiceImpl into use
 15. RestTemplate as Spring bean
